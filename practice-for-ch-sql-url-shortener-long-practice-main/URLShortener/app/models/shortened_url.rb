@@ -18,13 +18,17 @@ class ShortenedUrl < ApplicationRecord
     primary_key: :id,
     foreign_key: :user_id,
     class_name: :User
+
+  belongs_to :visitors
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :User
   
   after_initialize do
     if self.new_record?
         new_url = generate_short_url
         self.short_url = new_url 
     end
-
     # new_url = generate_short_url
     # self.short_url = new_url if self.new_record?
   end

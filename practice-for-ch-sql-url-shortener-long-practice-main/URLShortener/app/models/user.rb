@@ -15,4 +15,11 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :ShortenedUrl,
     dependent: :destroy
+
+
+  has_many :visited_urls,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :ShortenedUrl
+    dependent: :destroy
 end
